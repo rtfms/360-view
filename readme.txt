@@ -126,6 +126,9 @@ less than impressive and very inconvenient.
 - Allow - this will allow you to navigate the image by moving the mobile device around. That's a lot more immersive!
 
 == Changelog ==
+# v0.2.1
+Added support for the Field of View and refactored to comply with Wordpress Plugin requirements
+
 # v0.1.1
 The first public release. Provides a shortcode embedding 360-degree photos and adding a text label to it.
 
