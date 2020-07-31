@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
     framedoc.documentElement.lang = "en-US";
     var script = framedoc.createElement('script');
     script.type = 'text/javascript';
-    script.src = '//aframe.io/releases/1.0.4/aframe.min.js';
+    script.src = params.base+'aframe.min.js';
     framedoc.head.appendChild(script);
     var maxTries = 10;
 

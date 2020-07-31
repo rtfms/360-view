@@ -30,6 +30,7 @@ function wp360($atts = [], $content = null, $tag = 'wvr') {
 		    'src' => plugin_dir_url( __FILE__ ).'default.jpg'
             ], $atts, $tag);
     $js_attrs = array_diff_key($wvr_atts, array_flip(['width', 'height', 'align', 'margin']));
+    $js_attrs['base'] = plugin_dir_url( __FILE__ );
     $id = 'img_360_'.rand(100000,999999);
     $view_data = json_encode($js_attrs,JSON_HEX_APOS);
 	return <<< HTML
