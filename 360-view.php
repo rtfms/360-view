@@ -2,7 +2,7 @@
 /**
  * Plugin Name: 360 View
  * Description: Easily use 360-degree images in your blog
- * Version: 0.2.1
+ * Version: 0.2.2
  * Author: Andrey Mikhalchuk
  * Author URI: https://andrey.mikhalchuk.com
  * License: MIT
@@ -17,7 +17,7 @@ function wp360($atts = [], $content = null, $tag = 'wvr') {
 		    'height' => '300px',
 		    'fov' => 80,
 		    'rotation' => '0 0 0',
-		    'scale' => '1 1 1',
+		    'scale' => '-1 1 1',
 		    'text' => '',
 		    'text-position' => '0.0 0.0 -2.5',
 		    'text-rotation' => '0 0 0',
@@ -31,11 +31,16 @@ function wp360($atts = [], $content = null, $tag = 'wvr') {
             ], $atts, $tag);
     $js_attrs = array_diff_key($wvr_atts, array_flip(['width', 'height', 'align', 'margin']));
     $id = 'img_360_'.rand(100000,999999);
-	$c = '<iframe id='.$id.' src="about:blank" ';
-	$c .= 'style="width:'.$wvr_atts['width'].';height:'.$wvr_atts['height'].';float:'.$wvr_atts['align'].';margin:'.$wvr_atts['margin'].'" ';
-	$c .= "onload='render360View(\"".$id.'", '.json_encode($js_attrs).")'";
-	$c .= '></iframe>';
-	return $c;
+    $view_data = json_encode($js_attrs,JSON_HEX_APOS);
+	return <<< HTML
+<iframe
+    id="{$id}"
+    src="about:blank"
+    class="a-360-view"
+	style="width:{$wvr_atts['width']};height:{$wvr_atts['height']};float:{$wvr_atts['align']};margin:{$wvr_atts['margin']};"
+	data-360-view='{$view_data}'>
+    </iframe>
+HTML;
 }
 
 function three_sixty_view_scripts() {

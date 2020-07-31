@@ -39,7 +39,7 @@ more advanced example:
 - width (\"100%\") - the width of the viewport, could be specified in pixels, percents etc 
 - height (\"300px\") - the height of the viewport
 - rotation (\"0 0 0\") - the initial rotation of the image (pitch, yaw and roll) in degrees
-- scale (\"1 1 1\") - the scale (i.e. how do you want to resize your image) of the image in 3 dimensions
+- scale (\"-1 1 1\") - the scale (i.e. how do you want to resize your image) of the image in 3 dimensions. Note that the first parameter -s negative. If you make it positive then the image will be mirrored horizontally.
 - fov (80) - use this parameter to correct the "fisheye" effect when you are displaying the image in a viewport that's stretched too much (see the FAQ)
 - text (\"\") - the text label to display on the image. The default is the empty string (i.e. no text label will be displayed)
 - text-position (\"0.0 0.0 -2.5\") - position of the text label in 3d space. It\'s best to keep the 3rd coordinate negative, around 2-5
@@ -109,6 +109,21 @@ because science (optics, to be more specific).
 supports export in the most popular equirectangular format and use that format. If you open your image in a regular photo viewer
 and it looks like two circles, that's the wrong format. For instance, in Insta360 One X Studio 2020 you need to open the .insp
 file and export it - that will generate the acceptably formatted image.
+
+= My mobile browser shows strange message when I'm trying to view the 360-degree image: "Set your browser to request the mobile version of the site and reload the page to enjoy immersive mode.". How to fix this? =
+This message appears in mobile browsers (Mobile Safari for instance) when it's configured to retrieve the desktop version
+of the site instead of mobile. You have two options:
+- Just click "Close" and continue watching the photo using the "finger version of drag-and-drop". It's not impressive,
+especially since you may not be able to navigate vertically.
+- Configure your browser to request the mobile version. In iOS 13 that's Settings->Safari->Request Desktop Website->All Websites
+and turn that off. This will allow you to watch the image by moving your mobile device around, it will work like a "portal".
+BTW, this will also fix this problem in Chrome since in iOS Chrome is Safari-based.
+
+= My mobile browser asks "This immersive website requires access to your device motion sensors. (Deny/Allow). What do I do? =
+You have two options:
+- Deny - in this case you will only be able to watch the image by scrolling it horizontally with your finger. That's
+less than impressive and very inconvenient.
+- Allow - this will allow you to navigate the image by moving the mobile device around. That's a lot more immersive!
 
 == Changelog ==
 # v0.1.1
