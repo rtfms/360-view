@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
-  var viewports = document.getElementsByClassName('a-360-view');
+  var viewports = document.getElementsByClassName('am360view');
   for (var i = 0; i < viewports.length; i++) {
-    render360view(viewports[i].id, JSON.parse(viewports[i].getAttribute( 'data-360-view')));
+    render360view(viewports[i].id, JSON.parse(viewports[i].getAttribute( 'data-am360view')));
   }
 
   function render360view(id, params) {

@@ -126,7 +126,10 @@ less than impressive and very inconvenient.
 - Allow - this will allow you to navigate the image by moving the mobile device around. That's a lot more immersive!
 
 == Changelog ==
-# v0.2.1
+# v0.2.3
+Improved names of the global php functions
+
+# v0.2.2
 Added support for the Field of View and refactored to comply with Wordpress Plugin requirements
 
 # v0.1.1

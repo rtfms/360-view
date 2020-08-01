@@ -2,7 +2,7 @@
 /**
  * Plugin Name: 360 View
  * Description: Easily use 360-degree images in your blog
- * Version: 0.2.2
+ * Version: 0.2.3
  * Author: Andrey Mikhalchuk
  * Author URI: https://andrey.mikhalchuk.com
  * License: MIT
@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) or die( "Just don't do it!" );
 
-function wp360($atts = [], $content = null, $tag = 'wvr') {
+function am360view_shortcode($atts = [], $content = null, $tag = 'wvr') {
 	    $atts = array_change_key_case((array)$atts, CASE_LOWER);
 	    $wvr_atts = shortcode_atts([
 		    'width' => '100%',
@@ -37,17 +37,17 @@ function wp360($atts = [], $content = null, $tag = 'wvr') {
 <iframe
     id="{$id}"
     src="about:blank"
-    class="a-360-view"
+    class="am360view"
 	style="width:{$wvr_atts['width']};height:{$wvr_atts['height']};float:{$wvr_atts['align']};margin:{$wvr_atts['margin']};"
-	data-360-view='{$view_data}'>
+	data-am360view='{$view_data}'>
     </iframe>
 HTML;
 }
 
-function three_sixty_view_scripts() {
-    wp_enqueue_script( '360_view', plugin_dir_url( __FILE__ ) . '360-view.js', array(), '0.1.2', true );
+function am360view_scripts() {
+    wp_enqueue_script( '360_view', plugin_dir_url( __FILE__ ) . '360-view.js', array(), '0.2.3', true );
 }
 
-add_action( 'wp_enqueue_scripts', 'three_sixty_view_scripts' );
-add_shortcode('360', 'wp360');
+add_action( 'wp_enqueue_scripts', 'am360view_scripts' );
+add_shortcode('360', 'am360view_shortcode');
 ?>
