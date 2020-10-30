@@ -2,78 +2,84 @@
 Contributors: mikhalchuk
 Tags: vr, panorama, 360, 360 degree, 360 degree images, shortcode, embed
 Requires at least: 4.0
-Tested up to: 5.6.0
+Tested up to: 5.4
 Requires PHP: 7.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
+Stable tag: trunk
 
 Embed multiple 360-degree photos into your wordpress pages and posts  with a shortcode. This plugin also allows adding a simple text label to your photos and provides multiple ways to transform both the label and the view.
 
 == Description ==
-Embed 360-degree photos into your blog content with a shortcode.
+Embed 360-degree photos into your blog content with a shortcode. See example here: <a href="https://andrey.mikhalchuk.com/2020/07/09/using-360-degree-photos-in-wordpress.html" target="_new">Using 360-degree Photos in WordPress</a>
 
 # FEATURES:
-- place multiple 360-degree photos on the same page
-- host the photos anywhere (your own server, github, cloud drive, someone else\'s website, i.e. literally anywhere)
-- no 3rd party accounts are required. Uploading your images to a 3rd party server is not required either (though cloud hosting of your images is also supported)
-- wrap text around the photo
-- fullscreen mode
-- support for mobile devices and VR headsets
-- mobile device and headset position tracking
--  ability to add a 3-d label to the image
--- customize the label position and rotation
--- customize font family
--- customize the label size
-- ability to rotate the 360-degree photo (level horizon, change the starting point etc)
-- ability to define the viewport width and height
-- ability to save a screenshot from the 360-degree photo
+* place multiple 360-degree photos on the same page
+* host the photos anywhere (your own server, github, cloud drive, someone else's website, i.e. literally anywhere)
+* no 3rd party accounts are required. Uploading your images to a 3rd party server is not required either (though cloud hosting of your images is also supported)
+* wrap text around the photo
+* fullscreen mode
+* support for mobile devices and VR headsets
+* mobile device and headset position tracking
+*  ability to add a 3-d label to the image
+  * customize the label position and rotation
+  * customize font family
+  * customize the label size
+* ability to rotate the 360-degree photo (level horizon, change the starting point etc)
+* ability to define the viewport width and height
+* ability to save a screenshot from the 360-degree photo
 
 # SHORTCODE EXAMPLE
 basic example:
-[360 src=\"my_favorite-360-degree-image.jpg\" text=\"My Favorite Place\"]
+[360 src="my_favorite-360-degree-image.jpg" text="My Favorite Place"]
+
 more advanced example:
-[360 src=\"my_favorite-360-degree-image.jpg\" text=\"My Favorite Place\" text-position=\"-2 4 -3.5\" text-rotation=\"0 0 0\" width=\"400px\" height=\"400px\" align=\"left\" rotate=\"2 90 20\" text-color=\"#aa0000\" text-width=\"5\" text-scale=\"2 2\"]
+[360 src="my_favorite-360-degree-image.jpg" text="My Favorite Place" text-position="-2 4 -3.5" text-rotation="0 0 0" width="400px" height="400px" align="left" rotate="2 90 20" text-color="#aa0000" text-width="5" text-scale="2 2"]
 
 # SHORTCODE PARAMETERS
-(the values in the parenthesis are the defaults)
-- width (\"100%\") - the width of the viewport, could be specified in pixels, percents etc 
-- height (\"300px\") - the height of the viewport
-- rotation (\"0 0 0\") - the initial rotation of the image (pitch, yaw and roll) in degrees
-- scale (\"-1 1 1\") - the scale (i.e. how do you want to resize your image) of the image in 3 dimensions. Note that the first parameter -s negative. If you make it positive then the image will be mirrored horizontally.
-- fov (80) - use this parameter to correct the "fisheye" effect when you are displaying the image in a viewport that's stretched too much (see the FAQ)
-- text (\"\") - the text label to display on the image. The default is the empty string (i.e. no text label will be displayed)
-- text-position (\"0.0 0.0 -2.5\") - position of the text label in 3d space. It\'s best to keep the 3rd coordinate negative, around 2-5
-- text-rotation (\"0 0 0\") - text label rotation (pitch, yaw and roll) in degrees
-- text-font (\"kelsonsans\") - the font to use for the text label. Supported options are
--- aileronsemibold
--- dejavu
--- exo2bold
--- exo2semibold
--- kelsonsans
--- monoid
--- mozillavr
--- sourcecodepro
--- standard web font families (Arial, Helvetica, etc) are NOT supported
-- text-color (\"lightgrey\") - the font color. Both HTML color names and hex codes are supported
-- text-scale (\"1 1\") - font scale (x and y). I.e. if you want to make the font taller, then specify something like \"2 1\".
-- src - the URL of the image to display. This URL can be anywhere. For instance if you\'re self-hosting Wordpress, you can upload the image to your media library and list its URL (either relative or absolute) here.
-- align (\"left\") - how to align the viewport relative to the rest of the page contents
+The complete list of supported parameters is provided below. The values in the parenthesis are the defaults.
+
+* width ("100%") - the width of the viewport, could be specified in pixels, percents etc 
+* height ("300px") - the height of the viewport
+* rotation ("0 0 0") - the initial rotation of the image (pitch, yaw and roll) in degrees
+* scale ("-1 1 1") - the scale (i.e. how do you want to resize your image) of the image in 3 dimensions. Note that the first parameter -s negative. If you make it positive then the image will be mirrored horizontally.
+* fov (80) - use this parameter to correct the "fisheye" effect when you are displaying the image in a viewport that's stretched too much (see the FAQ)
+* text ("") - the text label to display on the image. The default is the empty string (i.e. no text label will be displayed)
+* text-position ("0.0 0.0 -2.5") - position of the text label in 3d space. It's best to keep the 3rd coordinate negative, around 2-5
+* text-rotation ("0 0 0") - text label rotation (pitch, yaw and roll) in degrees
+* text-font ("kelsonsans") - the font to use for the text label. Supported options are
+  * aileronsemibold
+  * dejavu
+  * exo2bold
+  * exo2semibold
+  * kelsonsans
+  * monoid
+  * mozillavr
+  * sourcecodepro
+  * standard web font families (Arial, Helvetica, etc) are NOT supported
+* text-color ("lightgrey") - the font color. Both HTML color names and hex codes are supported
+* text-scale ("1 1") - font scale (x and y). I.e. if you want to make the font taller, then specify something like "2 1".
+* src - the URL of the image to display. This URL can be anywhere. For instance if you're self-hosting Wordpress, you can upload the image to your media library and list its URL (either relative or absolute) here.
+* align ("left") - how to align the viewport relative to the rest of the page contents
 
 == Installation ==
-If you\'re using wordpress.com or configured plugins installation via Wordpress web UI then 
-- go to the Wordpress admin console
-- go to Plugins->Add New
-- search for \"Wordpress VR\" 
-- Click \"Install Now\"
-- Click \"Activate\"
-If you\'re self-hosting Wordpress or prefer to install the plugins from the command line
-- go to /wp-content/plugins
-- download the plugin .zip file (use wget or curl) into the plugins directory
-- unzip the file (and delete the .zip file if you want to)
-- go to Wordpress admin interface
-- go to Plugins
-- locate \"Wordpress VR\"
-- click \"Activate\"
+If you're using wordpress.com or configured plugins installation via Wordpress web UI then 
+
+* go to the Wordpress admin console
+* go to Plugins->Add New
+* search for "Wordpress VR" 
+* Click "Install Now"
+* Click "Activate"
+
+If you're self-hosting Wordpress or prefer to install the plugins from the command line
+
+* go to /wp-content/plugins
+* download the plugin .zip file (use wget or curl) into the plugins directory
+* unzip the file (and delete the .zip file if you want to)
+* go to Wordpress admin interface
+* go to Plugins
+* locate "Wordpress VR"
+* click "Activate"
 
 == Frequently Asked Questions ==
 = Can I embed video =
@@ -86,8 +92,8 @@ No and (at least for now) I plan to keep this plugin as a shortcode
 As many as you want (though don't use too many - this may make the page too slow on slow computers)
 
 = How can I support you =
-- Give 5 stars to this plugin
-- Subscribe to my YouTube channel https://www.youtube.com/rtfms and keep posting cheerful comments
+* Give 5 stars to this plugin
+* Subscribe to my YouTube channel <a href="https://www.youtube.com/rtfms" target="_new">https://www.youtube.com/rtfms<a> and keep posting cheerful comments
 
 = How do I save a screenshot of the 360-degree photo viewport? =
 Click on the photo you wish to save and press Control-Alt-S (yes, it's still Control-Alt-S even on Mac, not Command-Alt-S).
@@ -125,15 +131,24 @@ You have two options:
 less than impressive and very inconvenient.
 - Allow - this will allow you to navigate the image by moving the mobile device around. That's a lot more immersive!
 
+== Screenshots ==
+1. Embed your 36-degree image into your text just like a regular image. Great for storytelling!
+2. Place multiple 360-degree images next to each other and sync their viewports. Great for comparing two points of view on a mobile device with full motion tracking!
+3. Arrange multiple 360-degree views any way you want. Great for seeing multiple places simultaneously!
+4. Tons of shortcode parameters to display the images and label them exactly the way you want.
+
 == Changelog ==
-# v0.2.3
+# 0.2.4
+Improved the readme.txt file. Added low-res banner.
+
+# 0.2.3
 Improved names of the global php functions
 
-# v0.2.2
+# 0.2.2
 Added support for the Field of View and refactored to comply with Wordpress Plugin requirements
 
-# v0.1.1
+# 0.1.1
 The first public release. Provides a shortcode embedding 360-degree photos and adding a text label to it.
 
-# v0.0.0
+# 0.0.0
 This version was not released, I was using it only for local testing
