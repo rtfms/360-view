@@ -1,20 +1,20 @@
 === 360 View  ===
 Contributors: mikhalchuk
-Tags: vr, panorama, 360, 360 degree, 360 degree images, shortcode, embed
+Tags: vr, panorama, 360, 360 degree, 360 degree images, 360 degree videos, shortcode, embed
 Requires at least: 4.0
-Tested up to: 5.4
+Tested up to: 5.5.2
 Requires PHP: 7.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 Stable tag: trunk
 
-Embed multiple 360-degree photos into your wordpress pages and posts  with a shortcode. This plugin also allows adding a simple text label to your photos and provides multiple ways to transform both the label and the view.
+Embed multiple 360-degree photos and/or videos into your wordpress pages and posts  with a shortcode. This plugin also allows adding a simple text label to your photos and videos and provides multiple ways to transform both the label and the view.
 
 == Description ==
-Embed 360-degree photos into your blog content with a shortcode. See example here: <a href="https://andrey.mikhalchuk.com/2020/07/09/using-360-degree-photos-in-wordpress.html" target="_new">Using 360-degree Photos in WordPress</a>
+Embed 360-degree photos and videos into your blog content with a shortcode. See example here: <a href="https://andrey.mikhalchuk.com/2020/07/09/using-360-degree-photos-in-wordpress.html" target="_new">Using 360-degree Photos and Videos in WordPress</a>
 
 # FEATURES:
-* place multiple 360-degree photos on the same page
+* place multiple 360-degree photos and/or videos on the same page
 * host the photos anywhere (your own server, github, cloud drive, someone else's website, i.e. literally anywhere)
 * no 3rd party accounts are required. Uploading your images to a 3rd party server is not required either (though cloud hosting of your images is also supported)
 * wrap text around the photo
@@ -28,6 +28,7 @@ Embed 360-degree photos into your blog content with a shortcode. See example her
 * ability to rotate the 360-degree photo (level horizon, change the starting point etc)
 * ability to define the viewport width and height
 * ability to save a screenshot from the 360-degree photo
+* ability to play/pause the videos (and no annoying autoplay, respect the visitors of your blog!)
 
 # SHORTCODE EXAMPLE
 basic example:
@@ -35,6 +36,9 @@ basic example:
 
 more advanced example:
 [360 src="my_favorite-360-degree-image.jpg" text="My Favorite Place" text-position="-2 4 -3.5" text-rotation="0 0 0" width="400px" height="400px" align="left" rotate="2 90 20" text-color="#aa0000" text-width="5" text-scale="2 2"]
+
+embedding videos:
+[360 src="https://andrey.mikhalchuk.com/wp-content/andrey.mikhalchuk.com/eiffel-tower.mp4" rotation="0 50 0" height="400px"]
 
 # SHORTCODE PARAMETERS
 The complete list of supported parameters is provided below. The values in the parenthesis are the defaults.
@@ -151,6 +155,26 @@ Bottom line: your blog visitors will need to press the "Play" button in the bott
 
 = Can I specify a youtube URL in the src attribute? =
 No, this plugin is for embedding 360-degree videos and images, not for streaming. If you want to embed a youtube (or some other) 360 video, please find a different plugin developed for embedding youtube videos specifically.
+
+= I pasted the URL of my video into Gutenberg paragraph block, I'm sure the URL is correct, but I'm getting a black rectangle instead of the video/photo. How do I fix this? =
+Is the URL in your text shown in blue and underlined? Well, Gutenberg outsmarted you. It decided that since you're pasting a URL it needs to convert it into
+HTML that would make your URL clickable. What you need to do is
+* click on your block and frame and bunch of buttons will appear around it
+* click the 3 vertical dots at the top of the block
+* select "Edit as HTML"
+* replace the text in src="<replace this text>" with your URL
+* optionally click the three vertical dots again and click "Edit Visually"
+Now you should see the URL you pasted in normal color and without underlinement and your 360-degree video or photo should render as expected.
+
+= How to I experience all this VR awesomeness of my blog in a VR headset (for instance Oculus Quest)? =
+* Launch Firefox Reality
+* Go Open your blog in Firefox Reality (just type in the URL into the URL bar)
+* You can use the controller and try to drag the pictures, but you will only be able to pan then left and right
+* For complete immersive experience click the "VR" button on the image you want to see
+* For videos press "Play" button first and then "VR"
+
+= Can I add a text label to the video too? =
+Yes your can.
 
 == Screenshots ==
 1. Embed your 36-degree image into your text just like a regular image. Great for storytelling!

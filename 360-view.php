@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: 360 View
- * Description: Easily use 360-degree images in your blog
+ * Description: Easily embed any number of 360-degree images and/or videos into your blog posts.
  * Version: 0.3.0
  * Author: Andrey Mikhalchuk
  * Author URI: https://andrey.mikhalchuk.com
