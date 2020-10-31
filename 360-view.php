@@ -2,7 +2,7 @@
 /**
  * Plugin Name: 360 View
  * Description: Easily use 360-degree images in your blog
- * Version: 0.2.3
+ * Version: 0.3.0
  * Author: Andrey Mikhalchuk
  * Author URI: https://andrey.mikhalchuk.com
  * License: MIT
@@ -27,6 +27,7 @@ function am360view_shortcode($atts = [], $content = null, $tag = 'wvr') {
 		    'src' => 'test.jpg',
 		    'align' => 'left',
 		    'margin' => '0 10px 0 0',
+		    'kind' => 'photo',
 		    'src' => plugin_dir_url( __FILE__ ).'default.jpg'
             ], $atts, $tag);
     $js_attrs = array_diff_key($wvr_atts, array_flip(['width', 'height', 'align', 'margin']));
@@ -45,7 +46,7 @@ HTML;
 }
 
 function am360view_scripts() {
-    wp_enqueue_script( '360_view', plugin_dir_url( __FILE__ ) . '360-view.js', array(), '0.2.3', true );
+    wp_enqueue_script( '360_view', plugin_dir_url( __FILE__ ) . '360-view.js', array('jquery'), '0.3.0', true );
 }
 
 add_action( 'wp_enqueue_scripts', 'am360view_scripts' );
