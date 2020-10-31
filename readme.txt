@@ -177,10 +177,11 @@ Now you should see the URL you pasted in normal color and without underlinement 
 Yes your can.
 
 == Screenshots ==
-1. Embed your 36-degree image into your text just like a regular image. Great for storytelling!
+1. Embed your 360-degree image into your text just like a regular image. Great for storytelling!
 2. Place multiple 360-degree images next to each other and sync their viewports. Great for comparing two points of view on a mobile device with full motion tracking!
 3. Arrange multiple 360-degree views any way you want. Great for seeing multiple places simultaneously!
 4. Tons of shortcode parameters to display the images and label them exactly the way you want.
+5. Embed your 360-degree videos just as easily as the photos. Format and place them in the post as easily as regular media.
 
 == Changelog ==
 # 0.3.0
