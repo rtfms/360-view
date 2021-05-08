@@ -1,6 +1,6 @@
 === 360 View  ===
 Contributors: mikhalchuk
-Tags: vr, panorama, 360, 360 degree, 360 degree images, 360 degree videos, shortcode, embed
+Tags: vr, panorama, 360, 360 degree, 360 degree images, 360 degree videos, shortcode, embed, equirectangular
 Requires at least: 4.0
 Tested up to: 5.5.2
 Requires PHP: 7.0
@@ -31,19 +31,17 @@ Embed 360-degree photos and videos into your blog content with a shortcode. See 
 * ability to play/pause the videos (and no annoying autoplay, respect the visitors of your blog!)
 
 # SHORTCODE EXAMPLE
-basic example:
+* basic example:
 [360 src="my_favorite-360-degree-image.jpg" text="My Favorite Place"]
-
-more advanced example:
+* more advanced example:
 [360 src="my_favorite-360-degree-image.jpg" text="My Favorite Place" text-position="-2 4 -3.5" text-rotation="0 0 0" width="400px" height="400px" align="left" rotate="2 90 20" text-color="#aa0000" text-width="5" text-scale="2 2"]
-
-embedding videos:
+* embedding videos:
 [360 src="https://andrey.mikhalchuk.com/wp-content/andrey.mikhalchuk.com/eiffel-tower.mp4" rotation="0 50 0" height="400px"]
 
 # SHORTCODE PARAMETERS
 The complete list of supported parameters is provided below. The values in the parenthesis are the defaults.
 
-* width ("100%") - the width of the viewport, could be specified in pixels, percents etc 
+* width ("100%") - the width of the viewport, could be specified in pixels, percents etc
 * height ("300px") - the height of the viewport
 * rotation ("0 0 0") - the initial rotation of the image (pitch, yaw and roll) in degrees
 * scale ("-1 1 1") - the scale (i.e. how do you want to resize your image) of the image in 3 dimensions. Note that the first parameter -s negative. If you make it positive then the image will be mirrored horizontally.
@@ -68,11 +66,11 @@ The complete list of supported parameters is provided below. The values in the p
 * kind ("photo") - override the autodetect for the media type. If you specify an .mp4 file as the source then the media type will be automatically detected as "video". If you use other kind of a video file, please specify kind="video", otherwise the plugin will try to interpret it as a photo.
 
 == Installation ==
-If you're using wordpress.com or configured plugins installation via Wordpress web UI then 
+If you're using wordpress.com or configured plugins installation via Wordpress web UI then
 
 * go to the Wordpress admin console
 * go to Plugins->Add New
-* search for "Wordpress VR" 
+* search for "Wordpress VR"
 * Click "Install Now"
 * Click "Activate"
 
@@ -157,7 +155,7 @@ Bottom line: your blog visitors will need to press the "Play" button in the bott
 No, this plugin is for embedding 360-degree videos and images, not for streaming. If you want to embed a youtube (or some other) 360 video, please find a different plugin developed for embedding youtube videos specifically.
 
 = I pasted the URL of my video into Gutenberg paragraph block, I'm sure the URL is correct, but I'm getting a black rectangle instead of the video/photo. How do I fix this? =
-Is the URL in your text shown in blue and underlined? Well, Gutenberg outsmarted you. It decided that since you're pasting a URL it needs to convert it into
+Is the URL in your text shown in blue and underlined? If yes, then Wordpress outsmarted you. It decided that since you're pasting a URL it needs to convert it into
 HTML that would make your URL clickable. What you need to do is
 * click on your block and frame and bunch of buttons will appear around it
 * click the 3 vertical dots at the top of the block
@@ -176,6 +174,40 @@ Now you should see the URL you pasted in normal color and without underlinement 
 = Can I add a text label to the video too? =
 Yes your can.
 
+= I specified height=500 and the image collapsed into a thin line, what happened? =
+360 View supports all CSS units in most situations. Please include the unit specification with the width and height,
+for instance, instead of heigth="500" please specify height="500px" or height="500pt"
+
+= I specified height="50%" and the image collapsed into a thin line, what happened? =
+CSS "%" specification defines the height relative to the parent element's height. In most themes/layout, the height
+of most elements is not specified in order to make the text and pictures "flow" in responsive layouts, so the "%"
+specification will not work
+If you still want to use the "%" then you need to wrap the 360 View image into a parent element with a fixed height,
+but then you will need to make sure that tis parent element is also wrapped into an element with known height.
+I know this may sound very confusing, but this is not a plugin bug, but rather just how most websites work.
+
+= I tried to use one of your examples on my page and they didn't work. Why? =
+The examples listed on this page use images hosted on my web server. CORS policy prohibits the images from being
+embedded on your website. You need to use images hosted on your website.
+For example, just for a test, you can download the image you're trying to embed from my website
+(for example https://andrey.mikhalchuk.com/wp-content/andrey.mikhalchuk.com/IMG_20180101_051426_00_116-scaled.jpg),
+upload it to your website and them try to embed using the URL pointing to the image location on your website.
+
+= No matter what I do, I cannot make it work. Can you help? =
+I can try. Please
+* post the description of your problem to the plugin support page: https://wordpress.org/support/plugin/360-view/
+* provide as many details as possible
+* make sure you included the link to the page on your website reproducing the problem
+* if you're using a shortcode to embed the image/video, please include the full shortcode you are using in the problem description
+I can't promise immediate help and guarantee the problem resolution, but I'll try to do my best as soon as I have time.
+Also, the wordpress community is awesome and someone from the community may help you.
+
+= The images overlap with the rest of the contents, why? =
+It seems like you're trying to use shortcodes with gutenberg blocks. Even though you can paste the shortcodes into
+"paragraph blocks" and this will work in most themes, you really should only paste shortcodes into "shortcode blocks",
+otherwise problems like this may occur.
+
+
 == Screenshots ==
 1. Embed your 360-degree image into your text just like a regular image. Great for storytelling!
 2. Place multiple 360-degree images next to each other and sync their viewports. Great for comparing two points of view on a mobile device with full motion tracking!
@@ -184,6 +216,16 @@ Yes your can.
 5. Embed your 360-degree videos just as easily as the photos. Format and place them in the post as easily as regular media.
 
 == Changelog ==
+# 1.0.0
+* Added Gutenberg block support
+moved documentation to andrey.mikahlchuk.com
+added pois
+made the iframe format more user-friendly
+major code refactoring
+added orbiting
+support for media id
+
+
 # 0.3.0
 * Tested with Wordpress 5.5.2
 * Improved browser compatibility

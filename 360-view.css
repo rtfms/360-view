@@ -1,0 +1,46 @@
+.orbit-button {
+	height: 20px;
+	width: 20px;
+	position: absolute;
+	bottom: 4px;
+	left: 4px;
+	font-size: 16pt;
+	line-height: 16pt;
+	font-weight: bold;
+	color: #333;
+	border: 1px solid rgba(0,0,0,0.55);
+	border-radius: 8px;
+	padding: 0px 0px 2px 2px;
+	margin: 0;cursor: pointer;
+	background-color: #eff;
+	opacity: 40%;
+}
+
+.video-button {
+	height: 20px;
+	position: absolute;
+	bottom: 4px;
+	left: 34px;
+	font-size: 11pt;
+	line-height: 16pt;
+	font-weight: bold;
+	color: #333;
+	border: 1px solid rgba(0,0,0,0.55);
+	border-radius: 8px;
+	padding: 2px 3px 0px 6px;
+	margin: 0;
+	cursor: pointer;
+	background-color: #eff;
+	opacity: 40%;
+}
+
+.a-enter-vr {
+	bottom: 4px!important;
+	right: 4px!important;
+}
+
+.a-enter-vr-button {
+	min-height: 24px!important;
+	min-width: 40px!important;
+	opacity: 40%;
+}

@@ -1,0 +1,217 @@
+{
+  "mediaDimensions": {
+	"title": "Media Dimensions",
+	"initialOpen": true,
+	"items": {
+	  "width": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "TextControl",
+		"default": "100%",
+		"label": "Width",
+		"validationRegexName": "cssDimensionRegex",
+		"validationErrorMessage": "Width must be expressed in CSS-compatible format, for instance \"50%\" or \"150px\" or \"100pt\""
+	  },
+	  "height": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "TextControl",
+		"default": "400px",
+		"label": "Height",
+		"validationRegexName": "cssDimensionRegex",
+		"validationErrorMessage": "Height must be expressed in CSS-compatible format, for instance \"150px\" or \"100pt\". NOTE: In most themes specifying percents will not work."
+	  },
+	  "margin": {
+		"showInSidebar": false,
+		"type": "string",
+		"control": "TextControl",
+		"default": "0 auto",
+		"label": "Margins",
+		"validationRegexName": "fourNumberCss",
+		"help": "Do not change this unless you know CSS",
+		"validationErrorMessage": "Specify margins in CSS format, e.g. \"auto 10px 20pt -10px\""
+	  },
+	  "fov": {
+		"showInSidebar": true,
+		"type": "integer",
+		"control": "RangeControl",
+		"controlProperties": {
+		  "min": 1,
+		  "max": 179,
+		  "withInputField": true
+		},
+		"default": 80,
+		"label": "Field of View"
+	  },
+	  "rotation": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "TextControl",
+		"default": "0 0 0",
+		"label": "Rotation",
+		"validationRegexName": "threeNumbersRegex",
+		"validationErrorMessage": "Rotation must be specified as 3 space-separated numbers, e.g. \"10 20 0\""
+	  },
+	  "scale": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "TextControl",
+		"default": "-1 1 1",
+		"label": "Resize",
+		"validationRegexName": "threeNumbersRegex",
+		"validationErrorMessage": "Media resize factor must be specified as 3 space-separated numbers, e.g. \"-1.3 2 1\""
+	  }
+	}
+  },
+  "text": {
+	"title": "Text",
+	"items": {
+	  "text": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "TextControl",
+		"default": "",
+		"label": "Text"
+	  },
+	  "text-position": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "TextControl",
+		"default": "-3 2 -3",
+		"label": "Text Position",
+		"validationRegexName": "threeNumbersRegex",
+		"validationErrorMessage": "Text position must be specified as 3 space-separted numbers, e.g. \"-1.3 2 1\""
+	  },
+	  "text-rotation": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "TextControl",
+		"default": "0 0 0",
+		"label": "Text Rotation",
+		"validationRegexName": "threeNumbersRegex",
+		"validationErrorMessage": "Text rotation must be specified as 3 space-separted numbers, e.g. \"10 -20 0\""
+	  },
+	  "text-font": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "SelectControl",
+		"controlProperties": {
+		  "options": [
+			{
+			  "value": "roboto",
+			  "label": "Roboto"
+			},
+			{
+			  "value": "aileronsemibold",
+			  "label": "Aileronsemibold"
+			},
+			{
+			  "value": "dejavu",
+			  "label": "Dejavu"
+			},
+			{
+			  "value": "exo2bold",
+			  "label": "Exo2bold"
+			},
+			{
+			  "value": "exo2semibold",
+			  "label": "Exo2semibold"
+			},
+			{
+			  "value": "kelsonsans",
+			  "label": "Kelsonsans"
+			},
+			{
+			  "value": "monoid",
+			  "label": "Monoid"
+			},
+			{
+			  "value": "mozillavr",
+			  "label": "Mozillavr"
+			},
+			{
+			  "value": "sourcecodepro",
+			  "label": "Sourcecodepro"
+			}
+		  ]
+		},
+		"default": "kelsonsans",
+		"label": "Text Font"
+	  },
+	  "text-scale": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "TextControl",
+		"default": "2 2",
+		"label": "Text Resize",
+		"validationRegexName": "twoNumbersRegex",
+		"validationErrorMessage": "Text resize factor must be specified as 2 space-separated numbers, e.g. \"-1.3 2\""
+	  },
+	  "text-color": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "TextControl",
+		"default": "red",
+		"label": "Text Color",
+		"help": "Any CSS color works, including hex and rgb"
+	  }
+	}
+  },
+  "orbiting": {
+	"title": "Orbiting",
+	"items": {
+	  "orbiting-type": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "SelectControl",
+		"controlProperties": {
+		  "options": [
+			{
+			  "value": "none",
+			  "label": "None"
+			},
+			{
+			  "value": "constant",
+			  "label": "Constant"
+			}
+		  ]
+		},
+		"default": "none",
+		"label": "Orbiting Type"
+	  },
+	  "orbiting-speed": {
+		"showInSidebar": true,
+		"type": "string",
+		"control": "TextControl",
+		"default": "0 0.5 0",
+		"label": "Orbiting Speed",
+		"validationRegexName": "threeNumbersRegex",
+		"validationErrorMessage": "Orbiting speed must be specified as 3 space-separated numbers, e.g. \"1 -2.5 10\""
+	  }
+	}
+  },
+  "other": {
+	"items": {
+	  "src": {
+		"showInSidebar": false,
+		"type": "string"
+	  },
+	  "align": {
+		"showInSidebar": false,
+		"type": "string"
+	  },
+	  "block-id": {
+		"showInSidebar": false,
+		"type": "string"
+	  },
+	  "media-id": {
+		"showInSidebar": false,
+		"type": "integer"
+	  },
+	  "base": {
+		"showInSidebar": false,
+		"type": "string"
+	  }
+	}
+  }
+}
