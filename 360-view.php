@@ -20,7 +20,7 @@ function am360view_shortcode($atts = [], $content = null, $tag = 'wvr') {
 	$am360ViewAttributes = array();
     $am360viewAttributesString = '';
 	if( ! array_key_exists( 'base', $atts ) ) {
-		$atts['base'] = plugin_dir_url( __FILE__ ); // TODO: __DIR__ ??
+		$atts['base'] = plugin_dir_url( __FILE__ );
 	}
 	if( ! array_key_exists( 'block-id', $atts ) ) {
 		$atts['block-id'] = 'am360view_'.rand(100000,999999);
@@ -33,17 +33,26 @@ function am360view_shortcode($atts = [], $content = null, $tag = 'wvr') {
 			$am360viewAttributesString .= ' ' . 'data-' . $fieldName . '="' . $atts[$fieldName].'"';
 		}
 	}
+	$extraClass = '';
+	if ($atts['align'] === 'wide') {
+		$extraClass = ' alignwide';
+		$$wvr_atts['width'] = '100%';
+	} else if ($atts['align'] === 'full') {
+		$$wvr_atts['width'] = '100%';
+	} else {
+		$extraStyle = "width:{$atts['width']}";
+	}
 	return <<< HTML
-<iframe
+<div class="wp-block am360view-wrapper{$extraClass}" data-align="{$atts['align']}" style="$extraStyle"><iframe
     src="about:blank"
     class="am360view"
-	style="width:{$wvr_atts['width']};height:{$atts['height']};float:{$atts['align']};margin:{$atts['margin']};"
-	{$am360viewAttributesString}></iframe>
+	style="width:{$wvr_atts['width']};height:{$atts['height']};float:{$atts['align']};margin:{$atts['margin']};border:0;"
+	{$am360viewAttributesString}></iframe></div>
 HTML;
 }
 
 function am360view_scripts() {
-	global $am360_view_attributes_tree; // TODO: make it non-global
+	global $am360_view_attributes_tree;
 	wp_register_script('360_view', plugin_dir_url( __FILE__ ) . '360-view.js', array('jquery'), '1.0.0', true );
     wp_localize_script( '360_view', 'am360ViewAttributesTree',  $am360_view_attributes_tree);
     wp_enqueue_script( '360_view');

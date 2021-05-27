@@ -1,5 +1,3 @@
-// TODO: pass based from PHP
-
 /**
  * Contains information about all 360 views on the page, i.e. this script is loaded once on the page (instead of
  * loading it into each frame)
@@ -122,14 +120,14 @@ function am360view_updateView(id, params) {
 	 * @param o
 	 */
 	function orbitView(id) {
-		var subject = am360view_views[id][ isVideo() ?  'sphere' : 'sky' ];
-		var current = subject.getAttribute('rotation');
+		var view = am360view_views[id].cameraRig;
+		var current = view.getAttribute('rotation');
 		[ 'x', 'y', 'z' ].forEach( function( dim ) {
 			if( Math.abs( am360view_views[id].orbitingSpeed[dim] ) > 0.00001 ) {
-				if (subject.object3D.rotation[dim] > TWO_PI) {
-					subject.object3D.rotation[dim] -= Math.PI * 2;
+				if (view.object3D.rotation[dim] > TWO_PI) {
+					view.object3D.rotation[dim] -= Math.PI * 2;
 				}
-				subject.object3D.rotation[dim] += am360view_views[id].orbitingSpeed[dim];
+				view.object3D.rotation[dim] -= am360view_views[id].orbitingSpeed[dim];
 			}
 		} );
 		if( am360view_views[id].orbitView ) {
@@ -163,7 +161,8 @@ function am360view_updateView(id, params) {
             return;
         }
         // configure the view
-        var camera = ensureElementUpdated('a-camera', scene, o.id, o.params, {'look-controls': 'reverseMouseDrag: true'}, {'fov': params.fov});
+		var cameraRig = ensureElementUpdated('a-entity', scene, o.id, o.params, {}, {});
+        var camera = ensureElementUpdated('a-camera', cameraRig, o.id, o.params, {'look-controls': 'reverseMouseDrag: true'}, {'fov': params.fov});
 		if ( isVideo() ) {
             removeElement('a-sky', o.id);
             var assets = ensureElementUpdated('a-assets', scene, o.id, o.params, {'timeout': 50}, {});
@@ -187,7 +186,7 @@ function am360view_updateView(id, params) {
                     color: params['text-color'],
                     scale: params['text-scale'],
                 });
-            addVideoControl(id);
+			addVideoControl(id);
         } else {
             removeElement('playcontrol', o.id);
             removeElement('a-videosphere', o.id);
@@ -209,7 +208,8 @@ function am360view_updateView(id, params) {
 					scale: params['text-scale'],
 				});
         }
-        if( params['orbiting-type'] && params['orbiting-type'] != 'none' ) {
+		am360view_views[o.id].cameraRig = cameraRig;
+		if( params['orbiting-type'] && params['orbiting-type'] != 'none' ) {
         	if( ! framedoc.getElementById(id + '_orbitingcontrol') ) {
 				addOrbitingControl( id );
 				am360view_views[o.id].orbitView = true;
@@ -223,15 +223,16 @@ function am360view_updateView(id, params) {
 				orbitingControl.remove();
 			}
         }
-    }
+	}
 
     // initializes 3rd party libraries in the frame
     function initView(o) {
         var maxTries = 20;
 
-        // jQuery is qonky at this point for some reason, so using barebones JS
+        // jQuery load in WP is wonky at this point for some reason, so have to use barebones JS/DOM
         function initAFrame(o) {
-            var framedoc = am360view_views[o.id].framedoc;
+			am360view_views[o.id].rawframe.width = o.params.width;
+			var framedoc = am360view_views[o.id].framedoc;
             if( !framedoc.getElementById(o.id + '_styles') ) {
 				var styles = framedoc.createElement( 'link' );
 				styles.rel = 'stylesheet';
@@ -279,6 +280,7 @@ function am360view_updateView(id, params) {
         }
         framedoc.documentElement.lang = "en-US";
         am360view_views[id].framedoc = framedoc;
+		am360view_views[id].rawframe = rawframe;
         initAFrame(o);
     }
 

@@ -4,22 +4,29 @@
  * CSS for both Frontend+Backend.
  */
 
-/*.wp-block-cgb-am360view-advanced, */
-.am360view  {
+div[data-type="am360view/advanced"] {
+  max-width: 100%;
 }
 
-/* !!! Try adding class align<name> instead
-.am360view[data-align="full"]  {
-  width: 100vw!important;
-  max-width: 100vw!important;
+div.am360view-wrapper[data-align="center"] {
+  text-align: center;
 }
 
-.am360view[data-align="wide"]  {
-  max-width: 1200px;
-}
-
-.editor-styles-wrapper .block-editor-block-list__layout.is-root-container > .wp-block[data-align="full"] {
+div.am360view-wrapper[data-align="full"] {
   margin-left: -10px;
   margin-right: -10px;
 }
-*/
+
+div.am360view-wrapper[data-align="left"] {
+  float:left;
+}
+
+div.am360view-wrapper[data-align="right"] {
+  float:right;
+}
+
+div.am360view-wrapper[data-align="full"], div.am360view-wrapper[data-align="full"] iframe {
+  max-width: 100%!important;
+  width: 100%!important;
+  margin: 0!important;
+}

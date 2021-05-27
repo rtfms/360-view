@@ -82,10 +82,15 @@ for (const groupName in am360ViewAttributesTree) {
 }
 
 function get360ViewBlockIframe( props ) {
+	let extraClass = '';
+	if (props.attributes.align === 'wide') {
+		extraClass = ' alignwide';
+	}
 	const frameAttributes = {
 		class: 'am360view',
 		src: 'about:blank',
 		style: {
+			border: '0',
 			width: props.attributes.width,
 			height: props.attributes.height,
 			margin: props.attributes.margin,
@@ -94,7 +99,16 @@ function get360ViewBlockIframe( props ) {
 	for (const k in am360ViewAttributes) {
 		frameAttributes[`data-${ k }`] = props.attributes[k];
 	}
-	return React.createElement( FocusableIframe, frameAttributes );
+	return (
+		<div
+			class={ 'am360view-wrapper wp-block' + extraClass }
+			data-align={ props.attributes.align }
+			style={ { height: props.attributes.height, width: props.attributes.width } }
+		>
+			{ React.createElement( FocusableIframe, frameAttributes ) }
+		</div>
+	);
+	//return React.createElement( FocusableIframe, frameAttributes );
 };
 
 registerBlockType( 'am360view/advanced', {
@@ -113,13 +127,12 @@ registerBlockType( 'am360view/advanced', {
 		__( 'AR' ),
 	],
 	attributes: am360ViewAttributes,
+	// NOTE: align is intentionally set to false because there are just way too many bugs in Gutenberg dynamic blocks,
+	// for instance see https://github.com/WordPress/gutenberg/issues/25088, https://github.com/WordPress/gutenberg/issues/8383
 	supports: {
-		//align: true,
+		align: false,
 		multiple: true,
 		anchor: true,
-		className: false,
-		//customClassName: false,
-		//html: false,
 	},
 	edit: withNotices( ( props ) => {
 		am360view_updateView( props.attributes['block-id'], props.attributes );
@@ -146,6 +159,9 @@ registerBlockType( 'am360view/advanced', {
 			noticeOperations.createErrorNotice( message );
 		};
 		const updateAlign = ( nextAlign ) => {
+			if (nextAlign === 'full' || nextAlign === 'wide') {
+				props.attributes.width = '100%';
+			}
 			setAttributes( { align: nextAlign } );
 		};
 

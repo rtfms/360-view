@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) or die( "Just don't do it!" );
 
-// add ', true, 10, JSON_THROW_ON_ERROR' for debugging, not supported before 7.3.0
+// NOTE: add ', true, 10, JSON_THROW_ON_ERROR' for debugging, not supported before 7.3.0
 $am360_view_attributes_tree = json_decode( file_get_contents( plugin_dir_path( __DIR__ ) . '360-view-attributes.json' ), true, 10 );
 
 function am360view_block_assets() {

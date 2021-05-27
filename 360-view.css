@@ -10,7 +10,7 @@
 	color: #333;
 	border: 1px solid rgba(0,0,0,0.55);
 	border-radius: 8px;
-	padding: 0px 0px 2px 2px;
+	padding: 0px 0px 2px 3px;
 	margin: 0;cursor: pointer;
 	background-color: #eff;
 	opacity: 40%;
@@ -43,4 +43,37 @@
 	min-height: 24px!important;
 	min-width: 40px!important;
 	opacity: 40%;
+}
+
+iframe.am360view {
+	border: 0;
+}
+
+/* the following styles are borrowed from src/block/style.scss to ensure compatibility with Gutenberg */
+
+div[data-type="am360view/advanced"] {
+	max-width: 100%;
+}
+
+div.am360view-wrapper[data-align="center"] {
+	text-align: center;
+}
+
+div.am360view-wrapper[data-align="full"] {
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+div.am360view-wrapper[data-align="left"] {
+	float:left;
+}
+
+div.am360view-wrapper[data-align="right"] {
+	float:right;
+}
+
+div.am360view-wrapper[data-align="full"], div.am360view-wrapper[data-align="full"] iframe {
+	max-width: 100%!important;
+	width: 100%!important;
+	margin: 0!important;
 }
