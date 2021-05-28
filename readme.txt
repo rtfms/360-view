@@ -2,7 +2,7 @@
 Contributors: mikhalchuk
 Tags: vr, panorama, 360, 360 degree, 360 degree images, 360 degree videos, shortcode, embed, equirectangular
 Requires at least: 4.0
-Tested up to: 5.5.2
+Tested up to: 5.7.2
 Requires PHP: 7.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
