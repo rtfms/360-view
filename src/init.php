@@ -1,6 +1,9 @@
 <?php
 defined( 'ABSPATH' ) or die( "Just don't do it!" );
 
+require_once plugin_dir_path( __FILE__ ) . 'init.php';
+require_once plugin_dir_path( __FILE__ ) . '../360-view-util.php';
+
 // NOTE: add ', true, 10, JSON_THROW_ON_ERROR' for debugging, not supported before 7.3.0
 $am360_view_attributes_tree = json_decode( file_get_contents( plugin_dir_path( __DIR__ ) . '360-view-attributes.json' ), true, 10 );
 
@@ -41,9 +44,10 @@ function am360view_block_assets() {
 
 	register_block_type(
 		'am360view/advanced', array(
-			'style'         => 'am360view-cgb-style-css',
-			'editor_script' => 'am360view-cgb-block-js',
-			'editor_style'  => 'am360view-cgb-block-editor-css',
+			'style'         =>   'am360view-cgb-style-css',
+			'editor_script' =>   'am360view-cgb-block-js',
+			'editor_style'  =>   'am360view-cgb-block-editor-css',
+			'render_callback' => 'am360view_shortcode'
 		)
 	);
 }

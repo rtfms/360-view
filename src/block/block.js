@@ -1,8 +1,8 @@
 import './editor.scss';
 import './style.scss';
 
-const { __ } = wp.i18n; // Import __() from wp.i18n
-const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks;
 
 const {
 	BlockControls,
@@ -58,7 +58,7 @@ const attributeValidationRegexps = {
 	cssDimensionRegex: /^\-?(\d*\.?\d+)\s?(px|em|ex|%|in|cn|mm|pt|pc+)$/i,
 	threeNumbersRegex: /^\-?\d+(\.\d+)?\s+\-?\d+(\.\d+)?\s+\-?\d+(\.\d+)?$/i,
 	twoNumbersRegex: /^\-?\d+(\.\d+)?\s+\-?\d+(\.\d+)?$/i,
-	fourNumbersCss: /^([ ]*((-*\d+(px|em|%|cm|in|pc|pt|mm|ex)|auto|inherit)[ ]*)(!important)*){1,4}$/i,
+	fourNumbersCss: /^([ ]*((-*\d+(px|em|%|cm|in|pc|pt|mm|ex)|auto|0|inherit)[ ]*)(!important)*){1,4}$/i,
 };
 
 /**
@@ -87,13 +87,16 @@ function get360ViewBlockIframe( props ) {
 		extraClass = ' alignwide';
 	}
 	const frameAttributes = {
+		onFocus: ( e ) => {
+			e.target.parentElement.parentElement.focus();
+		},
 		class: 'am360view',
 		src: 'about:blank',
 		style: {
 			border: '0',
 			width: props.attributes.width,
 			height: props.attributes.height,
-			margin: props.attributes.margin,
+			margin: '0 auto',
 		},
 	};
 	for (const k in am360ViewAttributes) {
@@ -103,13 +106,16 @@ function get360ViewBlockIframe( props ) {
 		<div
 			class={ 'am360view-wrapper wp-block' + extraClass }
 			data-align={ props.attributes.align }
-			style={ { height: props.attributes.height, width: props.attributes.width } }
+			style={ { height: props.attributes.height, width: props.attributes.width, margin: props.attributes.margin } }
 		>
 			{ React.createElement( FocusableIframe, frameAttributes ) }
 		</div>
 	);
-	//return React.createElement( FocusableIframe, frameAttributes );
 };
+
+function getShortcodeEquivalent( attrs ) {
+	return '[360 ' + _.map( _(attrs).omit(['media-id', 'base', 'block-id']), (v,k)=>{return `${k}="${v}"`}).join(' ') + ']';
+}
 
 registerBlockType( 'am360view/advanced', {
 	title: __( '360 View' ),
@@ -162,13 +168,12 @@ registerBlockType( 'am360view/advanced', {
 			if (nextAlign === 'full' || nextAlign === 'wide') {
 				props.attributes.width = '100%';
 			}
+			if (nextAlign === 'center' || nextAlign === 'wide' || nextAlign === 'full') {
+				props.attributes.margin = '0 auto';
+			}
 			setAttributes( { align: nextAlign } );
 		};
 
-		/**
-		 * Updates attribute(s) and refreshes the preview
-		 * @param attributes
-		 */
 		const updateAttributes = ( attributes ) => {
 			setAttributes( attributes );
 			_.each( attributes, ( val, name ) => {
@@ -224,6 +229,16 @@ registerBlockType( 'am360view/advanced', {
 						initialOpen: am360ViewAttributesTree[groupKey].initialOpen === true,
 					}, groupItems );
 				} ) }
+				<PanelBody
+					title="Shortcode Equivalent"
+					initialOpen={false}
+				>
+					<TextareaControl
+						rows="14"
+						readonly
+						value={ getShortcodeEquivalent( props.attributes ) }
+					></TextareaControl>
+				</PanelBody>
 			</InspectorControls>
 		);
 		const preview = props.attributes.src ? get360ViewBlockIframe( props ) : (
@@ -249,8 +264,4 @@ registerBlockType( 'am360view/advanced', {
 			</Fragment>
 		);
 	} ),
-	save: ( props ) => {
-		am360view_updateView( props.attributes['block-id'], props.attributes );
-		return get360ViewBlockIframe( props );
-	},
 } );

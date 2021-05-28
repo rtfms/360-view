@@ -1,6 +1,6 @@
 === 360 View  ===
 Contributors: mikhalchuk
-Tags: vr, panorama, 360, 360 degree, 360 degree images, 360 degree videos, shortcode, embed, equirectangular
+Tags: vr, panorama, 360, 360 degree, 360 degree images, 360 degree videos, shortcode, gutenberg, block, embed, equirectangular, orbiting
 Requires at least: 4.0
 Tested up to: 5.7.2
 Requires PHP: 7.0
@@ -12,7 +12,7 @@ Embed multiple 360-degree photos and/or videos into your wordpress pages and pos
 This plugin also allows transforming the media, adding text, orbiting, supports mobile and VR devices and more.
 
 == Description ==
-Embed any number of 360-degree photos and videos into your blog content as a Gutenberg block or a shortcode.
+Embed multiple 360-degree photos and videos into your blog content as a Gutenberg block or a shortcode.
 Specify a text label, orbiting, variable Field of View, Rotation, Resizing and more for your 360 degree image or video.
 
 * See an example here: <a href="https://andrey.mikhalchuk.com/2020/07/09/using-360-degree-photos-in-wordpress.html" target="_new">Using 360-degree Photos and Videos in WordPress</a>
@@ -47,12 +47,19 @@ If you're self-hosting Wordpress or prefer to install the plugins from the comma
 7. Works as a shortcode in the text, shortcode block, code editor, gutenberg visual editor or as a combination of any of these modes.
 
 == Changelog ==
+# 1.1.0
+* Added "Shortcode Equivalent" for Gutenberg blocks
+* Fixed newest Wordpress compatibility issues
+* Fixed margin support
+
 # 1.0.1
+* NOTE: this version appeared to be incompatible with some Wordpress versions and was retracted
 * Updated dependencies
 * Fixed the problem with Gutenberg editor not initializing under certain circumstances
 * Fixing missing style files
 
 # 1.0.0
+* NOTE: this version appeared to be incompatible with some Wordpress versions and was retracted
 * Added Gutenberg block support
 * Rewrote the documentation, moved to https://andrey.mikhalchuk.com/360-view-wordpress-plugin
 * Made the code more user-friendly

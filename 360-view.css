@@ -48,32 +48,3 @@
 iframe.am360view {
 	border: 0;
 }
-
-/* the following styles are borrowed from src/block/style.scss to ensure compatibility with Gutenberg */
-
-div[data-type="am360view/advanced"] {
-	max-width: 100%;
-}
-
-div.am360view-wrapper[data-align="center"] {
-	text-align: center;
-}
-
-div.am360view-wrapper[data-align="full"] {
-	margin-left: -10px;
-	margin-right: -10px;
-}
-
-div.am360view-wrapper[data-align="left"] {
-	float:left;
-}
-
-div.am360view-wrapper[data-align="right"] {
-	float:right;
-}
-
-div.am360view-wrapper[data-align="full"], div.am360view-wrapper[data-align="full"] iframe {
-	max-width: 100%!important;
-	width: 100%!important;
-	margin: 0!important;
-}

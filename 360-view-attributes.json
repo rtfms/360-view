@@ -22,13 +22,13 @@
 		"validationErrorMessage": "Height must be expressed in CSS-compatible format, for instance \"150px\" or \"100pt\". NOTE: In most themes specifying percents will not work."
 	  },
 	  "margin": {
-		"showInSidebar": false,
+		"showInSidebar": true,
 		"type": "string",
 		"control": "TextControl",
 		"default": "0 auto",
 		"label": "Margins",
-		"validationRegexName": "fourNumberCss",
-		"help": "Do not change this unless you know CSS",
+		"validationRegexName": "fourNumbersCss",
+		"help": "Add a margin around the media. Any CSS specification will work.",
 		"validationErrorMessage": "Specify margins in CSS format, e.g. \"auto 10px 20pt -10px\""
 	  },
 	  "fov": {
