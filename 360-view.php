@@ -2,7 +2,7 @@
 /**
  * Plugin Name: 360 View
  * Description: Easily embed any number of 360-degree images and/or videos into your blog posts.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Andrey Mikhalchuk
  * Author URI: https://andrey.mikhalchuk.com
  * License: MIT
@@ -53,7 +53,7 @@ HTML;
 
 function am360view_scripts() {
 	global $am360_view_attributes_tree;
-	wp_register_script('360_view', plugin_dir_url( __FILE__ ) . '360-view.js', array('jquery'), '1.0.0', true );
+	wp_register_script('360_view', plugin_dir_url( __FILE__ ) . '360-view.js', array('jquery'), '1.0.1', true );
     wp_localize_script( '360_view', 'am360ViewAttributesTree',  $am360_view_attributes_tree);
     wp_enqueue_script( '360_view');
 }

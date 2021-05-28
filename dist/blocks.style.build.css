@@ -1,0 +1,31 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+div[data-type="am360view/advanced"] {
+  max-width: 100%; }
+
+div.am360view-wrapper[data-align="center"] {
+  text-align: center; }
+
+div.am360view-wrapper[data-align="full"] {
+  margin-left: -10px;
+  margin-right: -10px; }
+
+div.am360view-wrapper[data-align="left"] {
+  float: left; }
+
+div.am360view-wrapper[data-align="right"] {
+  float: right; }
+
+div.am360view-wrapper[data-align="full"], div.am360view-wrapper[data-align="full"] iframe {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important; }

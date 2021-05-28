@@ -47,6 +47,11 @@ If you're self-hosting Wordpress or prefer to install the plugins from the comma
 7. Works as a shortcode in the text, shortcode block, code editor, gutenberg visual editor or as a combination of any of these modes.
 
 == Changelog ==
+# 1.0.1
+* Updated dependencies
+* Fixed the problem with Gutenberg editor not initializing under certain circumstances
+* Fixing missing style files
+
 # 1.0.0
 * Added Gutenberg block support
 * Rewrote the documentation, moved to https://andrey.mikhalchuk.com/360-view-wordpress-plugin
